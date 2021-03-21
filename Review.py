@@ -1,3 +1,8 @@
+"""
+Author: Truong Dinh Kien
+Date Created: March 21, 2021
+"""
+
 # Midterm review
 import random
 import itertools
