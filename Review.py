@@ -166,14 +166,16 @@ for i in U3:
         white1blue1red1.append(i)
 P=len(white1blue1red1)/len(U3)   
 #5 a Theorical probability
-Ranks = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
+Ranks = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
 Suits = {'D', 'H', 'C', 'S'}
 U = list(itertools.combinations(list(itertools.product(Ranks , Suits)),5))
 def P_A(U):
     straights = 0
     for straight in U:
+        if straight[0][1]== straight[1][1]==straight[2][1]==straight[3][1]==straight[4][1]:
+            continue # excluding royal flush and straight flush
         values = [ card[0] for card in straight]
-        if  (max(values) - min(values) == 4 and len(set(values))==5) or {2,3,4,5,14}==set(values):
+        if  (max(values) - min(values) == 4 and len(set(values))==5) or {1,10,11,12,13}==set(values):
             straights+=1
     return straights/len(U)
 
@@ -182,10 +184,13 @@ def P_B(U,n):
     count=0
     max_index=len(U)-1
     for i in range(n):
-        values = [ card[0] for card in U[random.randint(0,max_index)]]
-        if  (max(values) - min(values) == 4 and len(set(values))==5) or {2,3,4,5,14}==set(values):
+        t=U[random.randint(0,max_index)]
+        if t[0][1]== t[1][1]==t[2][1]==t[3][1]==t[4][1]:
+            continue # excluding royal flush and straight flush
+        values = [ card[0] for card in t]
+        if  (max(values) - min(values) == 4 and len(set(values))==5) or {1,10,11,12,13}==set(values):
             count+=1
-    return count/(n)
+    return count/n
 
 #6a 
 E = {0,1,2,3,4,5}
