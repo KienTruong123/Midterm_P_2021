@@ -164,7 +164,7 @@ def poker6(n):
     return count/n
 #4
 URN= cross('w','12')|cross('b','123')|cross('r','1234')
-U3=list(itertools.permutations(URN,3))
+U3=list(itertools.combinations(URN,3))
 white1blue1red1=[]
 for i in U3:
     if i[0][0]!=i[1][0]!=i[2][0]!=i[0][0]:
